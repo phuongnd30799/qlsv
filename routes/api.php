@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/apiget', function (){
+    return [
+        'message' => 'Hello '. $_GET['param']
+    ];
+});
+Route::post('/apipost', function (Request $request){
+    return [
+        'message' => 'Hello '. $request->input('param')
+    ];
+});
