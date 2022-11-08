@@ -19,15 +19,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('firstname');
             $table->string('lastname');
-            $table->integer('phone number');
+            $table->string('phone_number');
             $table->string('email')->unique();
             $table->string('active');
-            $table->dateTime('delete_at')->nullable();
-            $table->dateTime('delete_by')->nullable();
-            $table->dateTime('create_at')->nullable();
-            $table->dateTime('create_by')->nullable();
-            $table->dateTime('update_at')->nullable();
-            $table->dateTime('update_by')->nullable();
+            $table->dateTime('deleted_at')->nullable();
+            $table->dateTime('deleted_by')->nullable();
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('created_by')->nullable();
+            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('updated_by')->nullable();
         });
     }
 

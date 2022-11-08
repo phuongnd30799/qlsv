@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\StudentsController;
+use App\Http\Controllers\Api\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/apiget', function (){
-    return [
-        'message' => 'Hello '. $_GET['param']
-    ];
+//Route::resource('/students',StudentsController::class);
+//Route::resource('/users',UsersController::class);
+Route::get('/student', function () {
+    return view('student');
 });
-Route::post('/apipost', function (Request $request){
-    return [
-        'message' => 'Hello '. $request->input('param')
-    ];
+Route::get('/user', function () {
+    return view('user');
 });

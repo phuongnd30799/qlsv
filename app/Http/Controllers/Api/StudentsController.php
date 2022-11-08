@@ -1,19 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Students;
 
-class testResourceController extends Controller
+class StudentsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index($param = null)
+    public function index()
     {
-        return $param;
+        $students = Students::all();
+        return response()->json([
+            'status'=>200,
+            'data'=>$students
+        ], 200);
     }
 
     /**
@@ -30,11 +36,24 @@ class testResourceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $studentCreate = Students::create([
+            'username'=>$request->username,
+            'firstname'=>$request->firstname,
+            'lastname'=>$request->lastname,
+            'phone_number'=>$request->phone_number,
+            'email'=>$request->email,
+            'gender'=>$request->gender,
+            'identification'=>$request->identification,
+            'address'=>$request->address,
+        ]);
+        return response()->json([
+            'status'=> 201,
+            'message'=> 'Create success!'
+        ],201);
     }
 
     /**
